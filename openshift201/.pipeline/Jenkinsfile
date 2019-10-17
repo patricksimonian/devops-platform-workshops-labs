@@ -4,7 +4,7 @@
 def TOOLS_NAMESPACE = "4zq6uj-patricksimonian-ocp201-tst-tools"
 def DEV_NAMESPACE = "4zq6uj-patricksimonian-ocp201-tst-dev"
 def PROD_NAMESPACE = "4zq6uj-patricksimonian-ocp201-tst-prod"
-
+def LOKI_SERVICE  = "loki"
 
 //Pipeline
 node {
@@ -12,6 +12,10 @@ node {
       dir ('simple_pipeline') {
         checkout scm
         sh "oc process -f openshift201/templates/template_loki_sample.yaml -p  LOKI_SERVICE_NAME=${LOKI_SERVICE} | oc apply -f - -n ${DEV_NAMESPACE}"
+        sh "echo Wait for service to be up"
+        timeout (time: 60, unit: "SECONDS"){
+          openshiftVerifyService apiURL: '', authToken: '', namespace: "${DEV_NAMESPACE}", svcName: "${LOKI_SERVICE}", verbose: 'false'
+        }
       }
   }
 }

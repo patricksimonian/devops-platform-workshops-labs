@@ -9,10 +9,9 @@ def PROD_NAMESPACE = "[project_name]-prod"
 //Pipeline
 node {
   stage ('Build Stage'){
-    dir ('simple_pipeline') {
-      checkout scm
-      sh "echo HELLO WORLD! "
-      sh "ls -lha openshift201/templates"
-    }
+      dir ('simple_pipeline') {
+        checkout scm
+        sh "oc get projects"
+      }
   }
 }

@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
 //ENV Vars
-def TOOLS_NAMESPACE = "[project_name]-tools"
-def DEV_NAMESPACE = "[project_name]-dev"
-def PROD_NAMESPACE = "[project_name]-prod"
+def TOOLS_NAMESPACE = "4zq6uj-patricksimonian-ocp201-tst-tools"
+def DEV_NAMESPACE = "4zq6uj-patricksimonian-ocp201-tst-dev"
+def PROD_NAMESPACE = "4zq6uj-patricksimonian-ocp201-tst-prod"
 
 
 //Pipeline
@@ -11,7 +11,7 @@ node {
   stage ('Build Stage'){
       dir ('simple_pipeline') {
         checkout scm
-        sh "oc get projects"
+        sh "oc process -f openshift201/templates/template_loki_sample.yaml -p  LOKI_SERVICE_NAME=${LOKI_SERVICE} | oc apply -f - -n ${DEV_NAMESPACE}"
       }
   }
 }

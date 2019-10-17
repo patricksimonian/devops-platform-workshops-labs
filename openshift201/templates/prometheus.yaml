@@ -7,7 +7,7 @@ parameters:
   - name: NAME
     value: prometheus
   - name: ROUTE_HOST
-    value: cvarjao-prometheus-4zq6uj-cvarjao-ocp201-tst-dev
+    value: patricksimonian-prometheus-4zq6uj-patricksimonian-ocp201-tst-dev
   - description: Default route subdomain
     displayName: Route subdomain
     name: ROUTE_DOMAIN

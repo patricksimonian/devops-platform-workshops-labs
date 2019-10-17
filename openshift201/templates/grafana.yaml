@@ -374,7 +374,7 @@ parameters:
   required: true
   value: prometheus
 - name: ROUTE_HOST
-  value: cvarjao-grafana-4zq6uj-cvarjao-ocp201-tst-tools
+  value: patricksimonian-grafana-4zq6uj-patricksimonian-ocp201-tst-tools
 - description: Default route subdomain
   displayName: Route subdomain
   name: ROUTE_DOMAIN
